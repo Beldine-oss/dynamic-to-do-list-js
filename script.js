@@ -14,37 +14,40 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Create list item
+        // Create a new list item for the task
         const li = document.createElement('li');
         li.textContent = taskText;
 
-        // Create remove button
+        // Create a remove button for the task
         const removeBtn = document.createElement('button');
         removeBtn.textContent = "Remove";
-        removeBtn.className = 'remove-btn';
 
-        // Remove task on button click
+        // Use classList.add instead of className
+        removeBtn.classList.add('remove-btn');
+
+        // Set up the remove button to delete the task
         removeBtn.onclick = () => {
             taskList.removeChild(li);
         };
 
-        // Append elements
+        // Append the remove button and the task to the task list
         li.appendChild(removeBtn);
         taskList.appendChild(li);
 
-        // Clear input
+        // Clear the input field
         taskInput.value = '';
     }
 
-    // Event: Add task on button click
+    // Add task on button click
     addButton.addEventListener('click', addTask);
 
-    // Event: Add task on Enter key press
+    // Add task when Enter key is pressed
     taskInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             addTask();
         }
     });
-
-    // Optionally invoke addTask() here if loading preset data in the future
 });
+
+
+
